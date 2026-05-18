@@ -3,605 +3,563 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Competitor Intelligence Dashboard</title>
+<title>Poaching Intel — Performance Gummies Competitors</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', -apple-system, sans-serif; background: #08090d; color: #c8ccd8; }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',-apple-system,sans-serif;background:#06070b;color:#b0b4c4;line-height:1.5}
 
-  /* NAV */
-  .topbar { position: sticky; top: 0; z-index: 100; background: rgba(8,9,13,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid #1a1c28; padding: 0 48px; display: flex; align-items: center; height: 56px; gap: 32px; }
-  .topbar .logo { font-weight: 800; font-size: 15px; color: #fff; letter-spacing: -0.3px; }
-  .topbar .logo span { color: #7b6cff; }
-  .tab-nav { display: flex; gap: 4px; }
-  .tab-btn { background: none; border: none; color: #6b7084; font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
-  .tab-btn:hover { color: #c8ccd8; background: #14161f; }
-  .tab-btn.active { color: #fff; background: #1e2030; }
+  .top{position:sticky;top:0;z-index:100;background:rgba(6,7,11,.94);backdrop-filter:blur(20px);border-bottom:1px solid #151720;display:flex;align-items:center;height:52px;padding:0 40px;gap:24px}
+  .top .mark{font-size:13px;font-weight:800;color:#fff;letter-spacing:-.3px}
+  .top .mark span{color:#c084fc}
+  .top-tabs{display:flex;gap:4px;margin-left:auto}
+  .top-tab{background:none;border:none;color:#555a6e;font:500 12px/1 'Inter',sans-serif;padding:7px 14px;border-radius:7px;cursor:pointer;transition:.15s}
+  .top-tab:hover{color:#b0b4c4;background:#111320}
+  .top-tab.on{color:#fff;background:#1a1d2e}
 
-  /* HERO */
-  .hero { padding: 48px 48px 0; }
-  .hero h1 { font-size: 36px; font-weight: 800; color: #fff; letter-spacing: -0.5px; line-height: 1.15; }
-  .hero h1 span { background: linear-gradient(135deg, #7b6cff, #5eead4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .hero p { margin-top: 8px; font-size: 15px; color: #6b7084; max-width: 600px; line-height: 1.6; }
+  .hero{padding:44px 40px 0}
+  .hero h1{font-size:34px;font-weight:900;color:#fff;letter-spacing:-.6px;line-height:1.1}
+  .hero h1 em{font-style:normal;background:linear-gradient(135deg,#c084fc,#818cf8,#5eead4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .sub{margin-top:8px;font-size:14px;color:#555a6e;max-width:660px}
 
-  /* KPI ROW */
-  .kpi-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; padding: 32px 48px; }
-  .kpi { background: #10121a; border: 1px solid #1a1c28; border-radius: 14px; padding: 20px; position: relative; overflow: hidden; }
-  .kpi::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 14px 14px 0 0; }
-  .kpi.k1::before { background: linear-gradient(90deg, #7b6cff, #a78bfa); }
-  .kpi.k2::before { background: linear-gradient(90deg, #5eead4, #2dd4bf); }
-  .kpi.k3::before { background: linear-gradient(90deg, #f472b6, #ec4899); }
-  .kpi.k4::before { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
-  .kpi.k5::before { background: linear-gradient(90deg, #60a5fa, #3b82f6); }
-  .kpi-val { font-size: 36px; font-weight: 800; color: #fff; }
-  .kpi-label { font-size: 12px; color: #6b7084; margin-top: 4px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px; }
+  .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:28px 40px}
+  .kp{background:#0d0e14;border:1px solid #151720;border-radius:12px;padding:18px 20px}
+  .kp .n{font-size:32px;font-weight:900;color:#fff}
+  .kp .l{font-size:10px;color:#555a6e;text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-top:2px}
+  .kp.a .n{color:#c084fc}.kp.b .n{color:#5eead4}.kp.c .n{color:#f472b6}.kp.d .n{color:#fbbf24}.kp.e .n{color:#60a5fa}
 
-  /* SECTIONS */
-  .section { padding: 0 48px 48px; }
-  .section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-  .section-head h2 { font-size: 20px; font-weight: 700; color: #fff; }
-  .section-head .pill { font-size: 11px; background: #1e2030; color: #7b6cff; padding: 5px 14px; border-radius: 20px; font-weight: 600; }
+  .sec{padding:0 40px 44px}
+  .sec-h{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+  .sec-h h2{font-size:18px;font-weight:800;color:#fff}
+  .sec-h .badge{font-size:10px;background:#1a1d2e;color:#c084fc;padding:4px 12px;border-radius:16px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
 
-  /* VALUE TABLE */
-  .val-table { width: 100%; border-collapse: separate; border-spacing: 0; }
-  .val-table thead th { background: #10121a; padding: 12px 16px; font-size: 11px; color: #6b7084; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; text-align: left; border-bottom: 1px solid #1a1c28; }
-  .val-table thead th:first-child { border-radius: 12px 0 0 0; }
-  .val-table thead th:last-child { border-radius: 0 12px 0 0; }
-  .val-table tbody td { padding: 14px 16px; border-bottom: 1px solid #12141c; font-size: 14px; vertical-align: top; }
-  .val-table tbody tr { transition: background 0.15s; }
-  .val-table tbody tr:hover { background: #12141c; }
-  .val-table .brand { font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; }
-  .brand-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .cat-bar{padding:10px 40px;background:#0d0e14;border-top:1px solid #151720;border-bottom:1px solid #151720;display:flex;align-items:center;gap:10px;margin-bottom:20px}
+  .cat-dot{width:8px;height:8px;border-radius:50%}
+  .cat-bar h3{font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px}
+  .cat-bar .cat-count{font-size:11px;color:#555a6e;margin-left:auto}
 
-  /* PRIORITY BADGES */
-  .pri { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .pri-hot { background: #ef444422; color: #ef4444; }
-  .pri-warm { background: #f59e0b22; color: #f59e0b; }
-  .pri-cold { background: #6b708422; color: #6b7084; }
-  .pri-explore { background: #7b6cff22; color: #7b6cff; }
+  .brand-row{background:#0d0e14;border:1px solid #151720;border-radius:14px;margin-bottom:12px;overflow:hidden;transition:border-color .2s}
+  .brand-row:hover{border-color:#c084fc33}
+  .br-head{display:flex;align-items:center;padding:16px 20px;cursor:pointer;gap:14px;user-select:none}
+  .br-head .av{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff;flex-shrink:0}
+  .br-head .info{flex:1}
+  .br-head .info h4{font-size:15px;font-weight:700;color:#fff}
+  .br-head .info .url{font-size:11px;color:#555a6e}
+  .br-head .people-count{font-size:12px;color:#c084fc;font-weight:700;background:#c084fc15;padding:4px 12px;border-radius:8px}
+  .br-head .no-data{font-size:11px;color:#555a6e;font-weight:500;background:#151720;padding:4px 12px;border-radius:8px}
+  .br-head .arrow{color:#555a6e;font-size:18px;transition:transform .2s}
+  .brand-row.open .arrow{transform:rotate(180deg)}
 
-  /* ACTION TAGS */
-  .action-tag { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 6px; margin: 2px 4px 2px 0; font-weight: 600; }
-  .at-poach { background: #f472b622; color: #f472b6; }
-  .at-pitch { background: #5eead422; color: #5eead4; }
-  .at-intel { background: #60a5fa22; color: #60a5fa; }
-  .at-partner { background: #fbbf2422; color: #fbbf24; }
+  .br-body{display:none;padding:0 20px 20px;border-top:1px solid #151720}
+  .brand-row.open .br-body{display:block}
 
-  /* OPPORTUNITY CARDS */
-  .opp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .opp-card { background: #10121a; border: 1px solid #1a1c28; border-radius: 16px; padding: 24px; transition: border-color 0.2s, transform 0.2s; }
-  .opp-card:hover { border-color: #7b6cff44; transform: translateY(-2px); }
-  .opp-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px; }
-  .opp-card h3 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-  .opp-card p { font-size: 13px; color: #6b7084; line-height: 1.6; }
-  .opp-card .targets { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
-  .opp-card .target-chip { font-size: 11px; background: #1e2030; color: #c8ccd8; padding: 4px 12px; border-radius: 8px; font-weight: 500; }
-  .opp-card .impact { margin-top: 16px; padding-top: 14px; border-top: 1px solid #1a1c28; display: flex; align-items: center; justify-content: space-between; }
-  .opp-card .impact-label { font-size: 11px; color: #6b7084; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
-  .impact-bar { width: 100px; height: 6px; background: #1a1c28; border-radius: 3px; overflow: hidden; }
-  .impact-fill { height: 100%; border-radius: 3px; }
+  .p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-top:14px}
+  .p-card{background:#111320;border:1px solid #1a1d2e;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px;transition:border-color .15s}
+  .p-card:hover{border-color:#c084fc44}
+  .p-card .pi{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+  .p-card .pd{flex:1;min-width:0}
+  .p-card .pd .nm{font-size:13px;font-weight:700;color:#e1e4ea}
+  .p-card .pd .rl{font-size:11px;color:#555a6e;margin-top:1px}
+  .p-card a.li{flex-shrink:0;background:#c084fc15;color:#c084fc;font-size:10px;font-weight:700;padding:5px 10px;border-radius:6px;text-decoration:none;transition:background .15s}
+  .p-card a.li:hover{background:#c084fc25}
 
-  /* BRAND DEEP DIVE */
-  .brand-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .b-card { background: #10121a; border: 1px solid #1a1c28; border-radius: 16px; overflow: hidden; }
-  .b-card-head { padding: 20px 24px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid #1a1c28; }
-  .b-avatar { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; color: #fff; }
-  .b-card-head h3 { font-size: 16px; font-weight: 700; color: #fff; }
-  .b-card-head .b-cat { font-size: 12px; color: #6b7084; }
-  .b-card-body { padding: 16px 24px 24px; }
-  .b-card-body .sub { font-size: 10px; color: #7b6cff; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 8px; margin-top: 14px; }
-  .b-card-body .sub:first-child { margin-top: 0; }
+  .rtag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:4px;text-transform:uppercase;letter-spacing:.3px}
+  .rt-creative{background:#c084fc18;color:#c084fc}
+  .rt-growth{background:#5eead418;color:#5eead4}
+  .rt-retention{background:#f472b618;color:#f472b6}
+  .rt-media{background:#fbbf2418;color:#fbbf24}
+  .rt-other{background:#60a5fa18;color:#60a5fa}
 
-  .person-row { display: flex; align-items: center; gap: 10px; padding: 7px 0; }
-  .p-init { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
-  .person-row .p-name { font-size: 13px; font-weight: 600; color: #e1e4ea; flex: 1; }
-  .person-row .p-role { font-size: 11px; color: #6b7084; }
-  .person-row a { font-size: 11px; color: #7b6cff; text-decoration: none; opacity: 0.6; transition: opacity 0.2s; }
-  .person-row a:hover { opacity: 1; }
+  .pp{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:3px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px}
+  .pp-high{background:#ef444420;color:#ef4444}
+  .pp-med{background:#fbbf2420;color:#fbbf24}
+  .pp-low{background:#555a6e20;color:#555a6e}
 
-  .agency-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .ag-chip { font-size: 11px; background: #1e2030; border: 1px solid #252840; padding: 4px 12px; border-radius: 8px; color: #c8ccd8; }
-  .ag-chip .yr { color: #5eead4; margin-left: 4px; font-weight: 700; }
+  .note{background:#111320;border-left:3px solid #c084fc;padding:10px 14px;border-radius:0 8px 8px 0;margin-top:12px;font-size:12px;color:#777b8e;line-height:1.5}
+  .note strong{color:#c084fc}
+  .note.warn{border-left-color:#ef4444}
+  .note.warn strong{color:#ef4444}
 
-  .b-note { background: #1a1c28; border-radius: 10px; padding: 10px 14px; margin-top: 14px; font-size: 12px; color: #8b8fa3; line-height: 1.5; }
-  .b-note strong { color: #f472b6; }
+  .ag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .ag{font-size:11px;background:#151720;border:1px solid #1a1d2e;padding:5px 14px;border-radius:8px;color:#b0b4c4}
+  .ag a{color:#b0b4c4;text-decoration:none}
+  .ag .yr{color:#5eead4;font-weight:700;margin-left:4px}
 
-  /* PLAYBOOK */
-  .playbook { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .play-step { background: #10121a; border: 1px solid #1a1c28; border-radius: 16px; padding: 24px; position: relative; }
-  .play-step::before { content: attr(data-step); position: absolute; top: 16px; right: 16px; font-size: 48px; font-weight: 900; color: #1a1c28; }
-  .play-step h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-  .play-step p { font-size: 13px; color: #6b7084; line-height: 1.6; }
-  .play-step ul { margin-top: 10px; padding-left: 16px; }
-  .play-step li { font-size: 12px; color: #8b8fa3; margin-bottom: 4px; }
+  .role-map{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+  .rm-card{background:#0d0e14;border:1px solid #151720;border-radius:12px;padding:20px}
+  .rm-card h4{font-size:13px;font-weight:700;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .rm-card .rm-list{list-style:none}
+  .rm-card .rm-list li{font-size:12px;padding:6px 0;border-bottom:1px solid #111320;display:flex;justify-content:space-between;align-items:center}
+  .rm-card .rm-list li:last-child{border:none}
+  .rm-card .rm-list .from{color:#555a6e;font-size:11px}
 
-  /* FOOTER */
-  .footer { text-align: center; padding: 48px; font-size: 12px; color: #2a2d3e; }
+  .nr{padding:14px;text-align:center;color:#555a6e;font-size:13px}
+  .nr span{display:inline-block;background:#151720;padding:4px 14px;border-radius:8px;font-size:11px;font-weight:600;margin-top:6px}
 
-  /* FILTERS */
-  .filters { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
-  .filter-btn { background: #10121a; border: 1px solid #1a1c28; color: #6b7084; font-size: 12px; padding: 6px 16px; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.2s; font-family: inherit; }
-  .filter-btn:hover, .filter-btn.on { background: #1e2030; color: #fff; border-color: #7b6cff; }
+  .footer{text-align:center;padding:40px;font-size:11px;color:#1a1d2e}
 
-  @media (max-width: 1100px) {
-    .kpi-row { grid-template-columns: repeat(3, 1fr); }
-    .opp-grid, .brand-cards { grid-template-columns: repeat(2, 1fr); }
-    .playbook { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 700px) {
-    .kpi-row, .opp-grid, .brand-cards, .playbook { grid-template-columns: 1fr; }
-    .hero, .section, .kpi-row { padding-left: 20px; padding-right: 20px; }
-    .topbar { padding: 0 20px; }
-  }
+  @media(max-width:900px){.kpis{grid-template-columns:repeat(3,1fr)}.p-grid{grid-template-columns:1fr}.role-map{grid-template-columns:1fr}.hero,.sec,.kpis{padding-left:20px;padding-right:20px}.top,.cat-bar{padding-left:20px;padding-right:20px}}
+  @media(max-width:600px){.kpis{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <div class="logo">Competitor<span>Intel</span></div>
-  <div class="tab-nav">
-    <button class="tab-btn active" onclick="scrollTo('#sec-overview')">Overview</button>
-    <button class="tab-btn" onclick="scrollTo('#sec-value')">Value Extraction</button>
-    <button class="tab-btn" onclick="scrollTo('#sec-brands')">Brand Intel</button>
-    <button class="tab-btn" onclick="scrollTo('#sec-playbook')">Playbook</button>
+<div class="top">
+  <div class="mark">Poaching<span>Intel</span></div>
+  <div class="top-tabs">
+    <button class="top-tab on" onclick="scrollSec('#sec-direct')">Direct Competitors</button>
+    <button class="top-tab" onclick="scrollSec('#sec-kegel')">Kegel Brands</button>
+    <button class="top-tab" onclick="scrollSec('#sec-scaling')">Hard Scaling</button>
+    <button class="top-tab" onclick="scrollSec('#sec-roles')">Role Map</button>
   </div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
-  <h1>Competitor Intelligence<br><span>DTC Health & Wellness Brands</span></h1>
-  <p>9 brands mapped — key people, agency ecosystems, and actionable opportunities for talent acquisition, client pitching, and partnership development.</p>
+  <h1>Poaching Intel —<br><em>Performance Gummies Competitors</em></h1>
+  <div class="sub">People, roles, and agency connections across the libido supplement and kegel niche. Focus: who to recruit, where to find them, and what they do.</div>
 </div>
 
-<!-- KPIs -->
-<div class="kpi-row">
-  <div class="kpi k1"><div class="kpi-val">9</div><div class="kpi-label">Brands Mapped</div></div>
-  <div class="kpi k2"><div class="kpi-val">22</div><div class="kpi-label">People Identified</div></div>
-  <div class="kpi k3"><div class="kpi-val">4</div><div class="kpi-label">Hot Opportunities</div></div>
-  <div class="kpi k4"><div class="kpi-val">5</div><div class="kpi-label">Agency Partners</div></div>
-  <div class="kpi k5"><div class="kpi-val">6</div><div class="kpi-label">Roles to Poach</div></div>
+<div class="kpis">
+  <div class="kp a"><div class="n">25+</div><div class="l">Brands Tracked</div></div>
+  <div class="kp b"><div class="n">22</div><div class="l">People Identified</div></div>
+  <div class="kp c"><div class="n">8</div><div class="l">High-Priority Poach</div></div>
+  <div class="kp d"><div class="n">5</div><div class="l">Agencies Mapped</div></div>
+  <div class="kp e"><div class="n">14</div><div class="l">Brands Need Research</div></div>
 </div>
 
-<!-- SECTION: VALUE EXTRACTION -->
-<div class="section" id="sec-value">
-  <div class="section-head">
-    <h2>Value Extraction Opportunities</h2>
-    <div class="pill">HIGH PRIORITY</div>
-  </div>
-  <div class="opp-grid">
-
-    <div class="opp-card">
-      <div class="opp-icon" style="background:#f472b622;">🎯</div>
-      <h3>Talent Poaching — Creative & Retention</h3>
-      <p>Multiple brands have exposed their creative production and retention teams on LinkedIn. These roles are high-value hires for our service delivery.</p>
-      <div class="targets">
-        <div class="target-chip">Video Editors (3)</div>
-        <div class="target-chip">Retention Engineers (2)</div>
-        <div class="target-chip">Creative Producers (2)</div>
-        <div class="target-chip">TikTok Strategist</div>
-      </div>
-      <div class="impact">
-        <div class="impact-label">Revenue Impact</div>
-        <div class="impact-bar"><div class="impact-fill" style="width:90%;background:linear-gradient(90deg,#f472b6,#ec4899)"></div></div>
-      </div>
-    </div>
-
-    <div class="opp-card">
-      <div class="opp-icon" style="background:#5eead422;">💰</div>
-      <h3>Client Pitching — Brands Without Strong Tech</h3>
-      <p>Several brands show weak or no tech infrastructure teams. Perfect pitch targets for our checkout, retention, and CRM infrastructure services.</p>
-      <div class="targets">
-        <div class="target-chip">Xara — email only</div>
-        <div class="target-chip">ReviveHealth — unverified</div>
-        <div class="target-chip">Lymphoria — retention only</div>
-        <div class="target-chip">Elare — minimal intel</div>
-      </div>
-      <div class="impact">
-        <div class="impact-label">Revenue Impact</div>
-        <div class="impact-bar"><div class="impact-fill" style="width:85%;background:linear-gradient(90deg,#5eead4,#2dd4bf)"></div></div>
-      </div>
-    </div>
-
-    <div class="opp-card">
-      <div class="opp-icon" style="background:#7b6cff22;">🤝</div>
-      <h3>Agency Ecosystem Partnerships</h3>
-      <p>JoyMode's agency stack reveals key players in the DTC health space. Partnering with these agencies creates a referral pipeline to similar brands.</p>
-      <div class="targets">
-        <div class="target-chip">GoPrimer (Growth)</div>
-        <div class="target-chip">Elliot Digital (Retention)</div>
-        <div class="target-chip">ModernAI (2025)</div>
-        <div class="target-chip">Antidote Email</div>
-      </div>
-      <div class="impact">
-        <div class="impact-label">Revenue Impact</div>
-        <div class="impact-bar"><div class="impact-fill" style="width:70%;background:linear-gradient(90deg,#7b6cff,#a78bfa)"></div></div>
-      </div>
-    </div>
-
-    <div class="opp-card">
-      <div class="opp-icon" style="background:#fbbf2422;">🧠</div>
-      <h3>Competitive Intel for Sales Calls</h3>
-      <p>Knowing who each brand works with lets you position ouragainst their current agencies on sales calls. "We know you're working with X — here's what they can't do."</p>
-      <div class="targets">
-        <div class="target-chip">JoyMode → Primer</div>
-        <div class="target-chip">Elare → Pereira & O'Dell</div>
-        <div class="target-chip">Mars GHC → Good Health Co</div>
-      </div>
-      <div class="impact">
-        <div class="impact-label">Revenue Impact</div>
-        <div class="impact-bar"><div class="impact-fill" style="width:65%;background:linear-gradient(90deg,#fbbf24,#f59e0b)"></div></div>
-      </div>
-    </div>
-
-    <div class="opp-card">
-      <div class="opp-icon" style="background:#60a5fa22;">🌍</div>
-      <h3>Ukraine Talent Pool — Relatio</h3>
-      <p>Relatio is aggressively hiring creative talent in Ukraine (2025). This is a cost-effective talent source for our creative and production needs.</p>
-      <div class="targets">
-        <div class="target-chip">Mykyta Marushchak</div>
-        <div class="target-chip">getrelatio company page</div>
-      </div>
-      <div class="impact">
-        <div class="impact-label">Revenue Impact</div>
-        <div class="impact-bar"><div class="impact-fill" style="width:55%;background:linear-gradient(90deg,#60a5fa,#3b82f6)"></div></div>
-      </div>
-    </div>
-
-    <div class="opp-card">
-      <div class="opp-icon" style="background:#ef444422;">🔑</div>
-      <h3>Decision Maker Access — PrimalStorm</h3>
-      <p>Roldan Sayago Jr. identified as main target. Direct access to a decision maker shortens the sales cycle dramatically.</p>
-      <div class="targets">
-        <div class="target-chip">Roldan Sayago Jr.</div>
-        <div class="target-chip">Media Buyer available</div>
-      </div>
-      <div class="impact">
-        <div class="impact-label">Revenue Impact</div>
-        <div class="impact-bar"><div class="impact-fill" style="width:80%;background:linear-gradient(90deg,#ef4444,#dc2626)"></div></div>
-      </div>
-    </div>
-
-  </div>
+<!-- DIRECT COMPETITORS -->
+<div id="sec-direct"></div>
+<div class="cat-bar">
+  <div class="cat-dot" style="background:#c084fc"></div>
+  <h3>Direct Supplement Competitors</h3>
+  <div class="cat-count">7 brands</div>
 </div>
 
-<!-- SECTION: MASTER TABLE -->
-<div class="section" id="sec-overview">
-  <div class="section-head">
-    <h2>Brand Overview — Priority & Actions</h2>
-  </div>
+<div class="sec">
 
-  <div style="overflow-x:auto; background:#10121a; border:1px solid #1a1c28; border-radius:16px;">
-  <table class="val-table">
-    <thead>
-      <tr>
-        <th>Brand</th>
-        <th>Priority</th>
-        <th>Team Size Mapped</th>
-        <th>Key Roles Found</th>
-        <th>Agency/Partners</th>
-        <th>Actions Available</th>
-        <th>Value Play</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><div class="brand"><span class="brand-dot" style="background:#7b6cff"></span>JoyMode</div></td>
-        <td><span class="pri pri-hot">HOT</span></td>
-        <td style="color:#fff;font-weight:700;">8 people</td>
-        <td>Growth, Retention, Video, Brand, TikTok, Amazon, Nutrition, Investor</td>
-        <td>ModernAI, Antidote, GoPrimer, Elliot Digital</td>
-        <td><span class="action-tag at-poach">Poach</span><span class="action-tag at-partner">Partner</span><span class="action-tag at-intel">Intel</span></td>
-        <td>Agency partnership pipeline + talent poaching</td>
-      </tr>
-      <tr>
-        <td><div class="brand"><span class="brand-dot" style="background:#ef4444"></span>PrimalStorm</div></td>
-        <td><span class="pri pri-hot">HOT</span></td>
-        <td style="color:#fff;font-weight:700;">4 people</td>
-        <td>Decision Maker, Media Buyer, Video Editor</td>
-        <td>—</td>
-        <td><span class="action-tag at-pitch">Pitch</span><span class="action-tag at-poach">Poach</span></td>
-        <td>Direct decision maker access — pitch ourservices</td>
-      </tr>
-      <tr>
-        <td><div class="brand"><span class="brand-dot" style="background:#ab47bc"></span>The Coach</div></td>
-        <td><span class="pri pri-warm">WARM</span></td>
-        <td style="color:#fff;font-weight:700;">4 people</td>
-        <td>Creative Producer (x2), Head of Content</td>
-        <td>—</td>
-        <td><span class="action-tag at-poach">Poach</span><span class="action-tag at-intel">Intel</span></td>
-        <td>Strong creative team — poach producers</td>
-      </tr>
-      <tr>
-        <td><div class="brand"><span class="brand-dot" style="background:#4dd0e1"></span>Mars GHC</div></td>
-        <td><span class="pri pri-warm">WARM</span></td>
-        <td style="color:#fff;font-weight:700;">1 person</td>
-        <td>1 contact</td>
-        <td>Good Health Company (parent)</td>
-        <td><span class="action-tag at-poach">Poach</span><span class="action-tag at-pitch">Pitch</span></td>
-        <td>Parent company = bigger opportunity; solid for poaching</td>
-      </tr>
-      <tr>
-        <td><div class="brand"><span class="brand-dot" style="background:#ef5350"></span>Relatio</div></td>
-        <td><span class="pri pri-warm">WARM</span></td>
-        <td style="color:#fff;font-weight:700;">1 person</td>
-        <td>Key contact</td>
-        <td>—</td>
-        <td><span class="action-tag at-poach">Poach</span><span class="action-tag at-intel">Intel</span></td>
-        <td>Ukraine creative talent pool — cost-effective hires</td>
-      </tr>
-      <tr>
-        <td><div class="brand"><span class="brand-dot" style="background:#ffa64d"></span>Xara</div></td>
-        <td><span class="pri pri-explore">EXPLORE</span></td>
-        <td style="color:#fff;font-weight:700;">1 person</td>
-        <td>Email / Retention</td>
-        <td>—</td>
-        <td><span class="action-tag at-pitch">Pitch</span></td>
-        <td>Only email person found — likely needs full infra</td>
-      </tr>
-      <tr>
-        <td><div class="brand"><span class="brand-dot" style="background:#ec407a"></span>Lymphoria</div></td>
-        <td><span class="pri pri-explore">EXPLORE</span></td>
-        <td style="color:#fff;font-weight:700;">1 person</td>
-        <td>Retention Engineer</td>
-        <td>—</td>
-        <td><span class="action-tag at-pitch">Pitch</span><span class="action-tag at-poach">Poach</span></td>
-        <td>Investing in retention = ready for infra conversation</td>
-      </tr>
-      <tr>
-        <td><div class="brand"><span class="brand-dot" style="background:#66bb6a"></span>ReviveHealth</div></td>
-        <td><span class="pri pri-cold">COLD</span></td>
-        <td style="color:#fff;font-weight:700;">1 person</td>
-        <td>Unverified contact</td>
-        <td>—</td>
-        <td><span class="action-tag at-intel">Intel</span></td>
-        <td>Needs verification before any action</td>
-      </tr>
-      <tr>
-        <td><div class="brand"><span class="brand-dot" style="background:#29b6f6"></span>Elare</div></td>
-        <td><span class="pri pri-cold">COLD</span></td>
-        <td style="color:#fff;font-weight:700;">0</td>
-        <td>—</td>
-        <td>Pereira & O'Dell (?)</td>
-        <td><span class="action-tag at-intel">Intel</span></td>
-        <td>Minimal data — needs more research</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-</div>
-
-<!-- SECTION: BRAND DEEP DIVE -->
-<div class="section" id="sec-brands">
-  <div class="section-head">
-    <h2>Brand Deep Dive — People & Connections</h2>
-    <div class="pill">ALL LINKEDIN LINKS CLICKABLE</div>
-  </div>
-
-  <div class="filters">
-    <button class="filter-btn on" onclick="filterCards('all',this)">All Brands</button>
-    <button class="filter-btn" onclick="filterCards('hot',this)">🔥 Hot</button>
-    <button class="filter-btn" onclick="filterCards('warm',this)">🟡 Warm</button>
-    <button class="filter-btn" onclick="filterCards('explore',this)">🔵 Explore</button>
-  </div>
-
-  <div class="brand-cards" id="brandGrid">
-
-    <!-- JoyMode -->
-    <div class="b-card" data-pri="hot">
-      <div class="b-card-head">
-        <div class="b-avatar" style="background:linear-gradient(135deg,#7b6cff,#a78bfa)">JM</div>
-        <div><h3>JoyMode</h3><div class="b-cat">DTC Supplement &bull; <span class="pri pri-hot" style="font-size:10px;padding:2px 8px;">HOT</span></div></div>
+  <!-- JOYMODE -->
+  <div class="brand-row open" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#c084fc,#818cf8)">JM</div>
+      <div class="info"><h4>JoyMode</h4><div class="url">Direct competitor &bull; Performance gummies</div></div>
+      <div class="people-count">8 people</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()">
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">
+        <span class="rtag rt-creative">Creative</span>
+        <span class="rtag rt-growth">Growth</span>
+        <span class="rtag rt-retention">Retention</span>
+        <span class="rtag rt-media">Marketplace</span>
+        <span class="rtag rt-other">Nutrition</span>
       </div>
-      <div class="b-card-body">
-        <div class="sub">Team (8 people)</div>
-        <div class="person-row"><div class="p-init" style="background:#7b6cff22;color:#7b6cff">ET</div><div class="p-name">Eduardo Troconis<br><span class="p-role">Video Editor</span></div><a href="https://www.linkedin.com/in/eduardotroconis" target="_blank">LI</a></div>
-        <div class="person-row"><div class="p-init" style="background:#7b6cff22;color:#7b6cff">MS</div><div class="p-name">Michael Saint-Aubin<br><span class="p-role">Brand Strategist</span></div><a href="https://www.linkedin.com/in/michaelsaintaubin" target="_blank">LI</a></div>
-        <div class="person-row"><div class="p-init" style="background:#7b6cff22;color:#7b6cff">SS</div><div class="p-name">Subramanyam S.<br><span class="p-role">Amazon / Walmart PPC</span></div><a href="https://www.linkedin.com/in/subramanyam-s-141295ppc" target="_blank">LI</a></div>
-        <div class="person-row"><div class="p-init" style="background:#7b6cff22;color:#7b6cff">JM</div><div class="p-name">Julien Malet<br><span class="p-role">Head of Growth</span></div><a href="https://www.linkedin.com/in/julienmalet" target="_blank">LI</a></div>
-        <div class="person-row"><div class="p-init" style="background:#7b6cff22;color:#7b6cff">JL</div><div class="p-name">James L.<br><span class="p-role">Retention</span></div><a href="https://www.linkedin.com/in/james-l-88560512b" target="_blank">LI</a></div>
-        <div class="person-row"><div class="p-init" style="background:#7b6cff22;color:#7b6cff">WL</div><div class="p-name">William Lagakos<br><span class="p-role">Nutrition Formulas</span></div><a href="https://www.linkedin.com/in/william-lagakos-b3509744" target="_blank">LI</a></div>
-        <div class="person-row"><div class="p-init" style="background:#7b6cff22;color:#7b6cff">AN</div><div class="p-name">Abha Nath<br><span class="p-role">Investor</span></div><a href="https://www.linkedin.com/in/abha-nath-6a021a66" target="_blank">LI</a></div>
-        <div class="person-row"><div class="p-init" style="background:#7b6cff22;color:#7b6cff">JD</div><div class="p-name">Jiannan Du<br><span class="p-role">TikTok Creative Strategist</span></div><a href="https://www.linkedin.com/in/jiannan-du" target="_blank">LI</a></div>
-        <div class="sub">Agency Ecosystem</div>
-        <div class="agency-chips">
-          <div class="ag-chip"><a href="https://www.linkedin.com/company/modernai/" target="_blank" style="color:#c8ccd8;text-decoration:none">ModernAI</a><span class="yr">2025</span></div>
-          <div class="ag-chip"><a href="https://www.linkedin.com/company/antidote-email/" target="_blank" style="color:#c8ccd8;text-decoration:none">Antidote Email</a><span class="yr">2022–23</span></div>
-          <div class="ag-chip"><a href="https://www.linkedin.com/company/goprimer/" target="_blank" style="color:#c8ccd8;text-decoration:none">GoPrimer</a><span class="yr">2025</span></div>
-          <div class="ag-chip"><a href="https://www.linkedin.com/company/elliotdigital/" target="_blank" style="color:#c8ccd8;text-decoration:none">Elliot Digital</a><span class="yr">2025</span></div>
+      <div class="p-grid">
+        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">ET</div><div class="pd"><div class="nm">Eduardo Troconis</div><div class="rl">Video Editor <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/eduardotroconis" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">MS</div><div class="pd"><div class="nm">Michael Saint-Aubin</div><div class="rl">Brand Strategist <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/michaelsaintaubin" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">SS</div><div class="pd"><div class="nm">Subramanyam S.</div><div class="rl">Amazon / Walmart PPC <span class="pp pp-med">Watch</span></div></div><a class="li" href="https://www.linkedin.com/in/subramanyam-s-141295ppc" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">JM</div><div class="pd"><div class="nm">Julien Malet</div><div class="rl">Head of Growth <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/julienmalet" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">JL</div><div class="pd"><div class="nm">James L.</div><div class="rl">Retention <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/james-l-88560512b" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">WL</div><div class="pd"><div class="nm">William Lagakos</div><div class="rl">Nutrition Formulas Consultant <span class="pp pp-med">Watch</span></div></div><a class="li" href="https://www.linkedin.com/in/william-lagakos-b3509744" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">AN</div><div class="pd"><div class="nm">Abha Nath</div><div class="rl">Investor <span class="pp pp-low">Info</span></div></div><a class="li" href="https://www.linkedin.com/in/abha-nath-6a021a66" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">JD</div><div class="pd"><div class="nm">Jiannan Du</div><div class="rl">TikTok Creative Strategist <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/jiannan-du" target="_blank">LinkedIn</a></div>
+      </div>
+      <div style="margin-top:14px"><div style="font-size:10px;color:#5eead4;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">Agency / Partner Ecosystem</div>
+        <div class="ag-row">
+          <div class="ag"><a href="https://www.linkedin.com/company/modernai/" target="_blank">ModernAI</a><span class="yr">2025</span></div>
+          <div class="ag"><a href="https://www.linkedin.com/company/antidote-email/" target="_blank">Antidote Email</a><span class="yr">2022-23</span></div>
+          <div class="ag"><a href="https://www.linkedin.com/company/goprimer/" target="_blank">GoPrimer</a><span class="yr">2025</span></div>
+          <div class="ag"><a href="https://www.linkedin.com/company/elliotdigital/" target="_blank">Elliot Digital</a><span class="yr">2025</span> — Retention agency</div>
         </div>
-        <div class="b-note"><strong>Key insight:</strong> Primer Agency is the main creative strategist target. Largest and most transparent team — richest intel source.</div>
       </div>
+      <div class="note"><strong>Goldmine for poaching.</strong> Richest team data of any competitor. Primer Agency = their main creative partner, also a poach source. 5 high-priority targets: video, brand, growth, retention, TikTok creative.</div>
     </div>
-
-    <!-- PrimalStorm -->
-    <div class="b-card" data-pri="hot">
-      <div class="b-card-head">
-        <div class="b-avatar" style="background:linear-gradient(135deg,#ef4444,#dc2626)">PS</div>
-        <div><h3>PrimalStorm</h3><div class="b-cat">Health / DTC &bull; <span class="pri pri-hot" style="font-size:10px;padding:2px 8px;">HOT</span></div></div>
-      </div>
-      <div class="b-card-body">
-        <div class="sub">Team (4 people)</div>
-        <div class="person-row"><div class="p-init" style="background:#ef444422;color:#ef4444">RS</div><div class="p-name">Roldan Sayago Jr. <span style="background:#ef444422;color:#ef4444;font-size:9px;padding:2px 6px;border-radius:4px;font-weight:700;margin-left:4px">MAIN TARGET</span><br><span class="p-role">Decision Maker</span></div><a href="https://www.linkedin.com/in/roldan-sayago-jr-2440ba95" target="_blank">LI</a></div>
-        <div class="person-row"><div class="p-init" style="background:#ef444422;color:#ef4444">ES</div><div class="p-name">Eman Saleem<br><span class="p-role">Underperformed — info collection only</span></div><a href="https://www.linkedin.com/in/eman-saleem-5724a520b" target="_blank">LI</a></div>
-        <div class="person-row"><div class="p-init" style="background:#ef444422;color:#ef4444">JC</div><div class="p-name">Joshua Cuizon<br><span class="p-role">Ex-Video Editor</span></div><a href="https://www.linkedin.com/in/joshuacuizon" target="_blank">LI</a></div>
-        <div class="person-row"><div class="p-init" style="background:#ef444422;color:#ef4444">CL</div><div class="p-name">Clndtzn<br><span class="p-role">Media Buyer</span></div><a href="https://www.linkedin.com/in/clndtzn" target="_blank">LI</a></div>
-        <div class="b-note"><strong>Action:</strong> Roldan = direct pitch target. Joshua (ex-editor) = potential hire. No agency presence = they need help.</div>
-      </div>
-    </div>
-
-    <!-- The Coach -->
-    <div class="b-card" data-pri="warm">
-      <div class="b-card-head">
-        <div class="b-avatar" style="background:linear-gradient(135deg,#ab47bc,#8e24aa)">TC</div>
-        <div><h3>The Coach</h3><div class="b-cat">Wellness &bull; <span class="pri pri-warm" style="font-size:10px;padding:2px 8px;">WARM</span></div></div>
-      </div>
-      <div class="b-card-body">
-        <div class="sub">Team (4 people)</div>
-        <div class="person-row"><div class="p-init" style="background:#ab47bc22;color:#ab47bc">EP</div><div class="p-name">Ernest Polishchuk<br><span class="p-role">Creative Producer</span></div><a href="https://www.linkedin.com/in/ernest-polishchuk-45108a26b" target="_blank">LI</a></div>
-        <div class="person-row"><div class="p-init" style="background:#ab47bc22;color:#ab47bc">NK</div><div class="p-name">Nikita Kalancha<br><span class="p-role">Team Member</span></div><a href="https://www.linkedin.com/in/nikita-kalancha" target="_blank">LI</a></div>
-        <div class="person-row"><div class="p-init" style="background:#ab47bc22;color:#ab47bc">NB</div><div class="p-name">Natalia Barashkova<br><span class="p-role">Creative Producer</span></div><a href="https://www.linkedin.com/in/natalia-barashkova-75929484" target="_blank">LI</a></div>
-        <div class="person-row"><div class="p-init" style="background:#ab47bc22;color:#ab47bc">AS</div><div class="p-name">Angelina Sarycheva<br><span class="p-role">Head of Content</span></div><a href="https://www.linkedin.com/in/angelina-sarycheva-6a1b80113" target="_blank">LI</a></div>
-        <div class="b-note"><strong>Value:</strong> Heavy creative/content team. Poach producers or pitch our tech infra to complement their creative strength.</div>
-      </div>
-    </div>
-
-    <!-- Mars GHC -->
-    <div class="b-card" data-pri="warm">
-      <div class="b-card-head">
-        <div class="b-avatar" style="background:linear-gradient(135deg,#4dd0e1,#2ba8b8)">MG</div>
-        <div><h3>Mars GHC</h3><div class="b-cat">Health Company &bull; <span class="pri pri-warm" style="font-size:10px;padding:2px 8px;">WARM</span></div></div>
-      </div>
-      <div class="b-card-body">
-        <div class="sub">Contact</div>
-        <div class="person-row"><div class="p-init" style="background:#4dd0e122;color:#4dd0e1">AG</div><div class="p-name">Anoosha Ghosh<br><span class="p-role">Contact</span></div><a href="https://www.linkedin.com/in/anoosha-ghosh" target="_blank">LI</a></div>
-        <div class="sub">Parent Company</div>
-        <div class="agency-chips">
-          <div class="ag-chip"><a href="https://www.linkedin.com/company/good-health-company/about/" target="_blank" style="color:#c8ccd8;text-decoration:none">Good Health Company &rarr;</a></div>
-        </div>
-        <div class="b-note"><strong>Key insight:</strong> Real company behind marsghc.com is Good Health Company. Solid for poaching and pitching — parent company means bigger budget.</div>
-      </div>
-    </div>
-
-    <!-- Relatio -->
-    <div class="b-card" data-pri="warm">
-      <div class="b-card-head">
-        <div class="b-avatar" style="background:linear-gradient(135deg,#ef5350,#c62828)">RE</div>
-        <div><h3>Relatio</h3><div class="b-cat">DTC / Wellness &bull; <span class="pri pri-warm" style="font-size:10px;padding:2px 8px;">WARM</span></div></div>
-      </div>
-      <div class="b-card-body">
-        <div class="sub">Contact</div>
-        <div class="person-row"><div class="p-init" style="background:#ef535022;color:#ef5350">MM</div><div class="p-name">Mykyta Marushchak<br><span class="p-role">Key Contact</span></div><a href="https://www.linkedin.com/in/mykyta-marushchak-385ba421a" target="_blank">LI</a></div>
-        <div class="sub">Company</div>
-        <div class="agency-chips">
-          <div class="ag-chip"><a href="https://www.linkedin.com/company/getrelatio/" target="_blank" style="color:#c8ccd8;text-decoration:none">getrelatio &rarr;</a></div>
-        </div>
-        <div class="b-note"><strong>Opportunity:</strong> Ukraine-based team with massive creative talent hiring in 2025. Cost-effective talent source for PM.</div>
-      </div>
-    </div>
-
-    <!-- Xara -->
-    <div class="b-card" data-pri="explore">
-      <div class="b-card-head">
-        <div class="b-avatar" style="background:linear-gradient(135deg,#ffa64d,#e08530)">XA</div>
-        <div><h3>Xara</h3><div class="b-cat">Health / DTC &bull; <span class="pri pri-explore" style="font-size:10px;padding:2px 8px;">EXPLORE</span></div></div>
-      </div>
-      <div class="b-card-body">
-        <div class="sub">Contact</div>
-        <div class="person-row"><div class="p-init" style="background:#ffa64d22;color:#ffa64d">DH</div><div class="p-name">Digital Hammad<br><span class="p-role">Email / Retention</span></div><a href="https://www.linkedin.com/in/digitalhammad" target="_blank">LI</a></div>
-        <div class="b-note"><strong>Pitch angle:</strong> Only email person visible — likely running retention solo. ourcan pitch full-stack infra to complement.</div>
-      </div>
-    </div>
-
-    <!-- Lymphoria -->
-    <div class="b-card" data-pri="explore">
-      <div class="b-card-head">
-        <div class="b-avatar" style="background:linear-gradient(135deg,#ec407a,#c2185b)">LY</div>
-        <div><h3>Lymphoria</h3><div class="b-cat">Health / Wellness &bull; <span class="pri pri-explore" style="font-size:10px;padding:2px 8px;">EXPLORE</span></div></div>
-      </div>
-      <div class="b-card-body">
-        <div class="sub">Contact</div>
-        <div class="person-row"><div class="p-init" style="background:#ec407a22;color:#ec407a">OI</div><div class="p-name">Orestis Iliou<br><span class="p-role">Retention Engineer</span></div><a href="https://www.linkedin.com/in/orestis-iliou-8b070926b" target="_blank">LI</a></div>
-        <div class="b-note"><strong>Signal:</strong> Hiring a retention engineer = they're investing in LTV. Perfect timing for checkout/upsell infra pitch.</div>
-      </div>
-    </div>
-
-    <!-- ReviveHealth -->
-    <div class="b-card" data-pri="explore">
-      <div class="b-card-head">
-        <div class="b-avatar" style="background:linear-gradient(135deg,#66bb6a,#43a047)">RH</div>
-        <div><h3>ReviveHealth</h3><div class="b-cat">Health &bull; <span class="pri pri-cold" style="font-size:10px;padding:2px 8px;">COLD</span></div></div>
-      </div>
-      <div class="b-card-body">
-        <div class="sub">Contact (Unverified)</div>
-        <div class="person-row"><div class="p-init" style="background:#66bb6a22;color:#66bb6a">LZ</div><div class="p-name">Leo Zanis<br><span class="p-role">Contact — not 100% verified</span></div><a href="https://www.linkedin.com/in/leozanis" target="_blank">LI</a></div>
-        <div class="b-note" style="border-left-color:#ef4444"><strong>Warning:</strong> Info not verified. Needs manual validation before any outreach.</div>
-      </div>
-    </div>
-
-    <!-- Elare -->
-    <div class="b-card" data-pri="explore">
-      <div class="b-card-head">
-        <div class="b-avatar" style="background:linear-gradient(135deg,#29b6f6,#0288d1)">EL</div>
-        <div><h3>Elare</h3><div class="b-cat">DTC &bull; <span class="pri pri-cold" style="font-size:10px;padding:2px 8px;">COLD</span></div></div>
-      </div>
-      <div class="b-card-body">
-        <div class="sub">Possible Agency</div>
-        <div class="agency-chips">
-          <div class="ag-chip"><a href="https://www.linkedin.com/company/pereira-odell/" target="_blank" style="color:#c8ccd8;text-decoration:none">Pereira & O'Dell &rarr;</a></div>
-        </div>
-        <div class="b-note" style="border-left-color:#ef4444"><strong>Warning:</strong> Minimal intel. Agency connection unclear. Needs deep research before any action.</div>
-      </div>
-    </div>
-
   </div>
+
+  <!-- PRIMALSTORM -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#ef4444,#dc2626)">PS</div>
+      <div class="info"><h4>PrimalStorm</h4><div class="url">primal-storm.com &bull; Direct competitor</div></div>
+      <div class="people-count">4 people</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()">
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">
+        <span class="rtag rt-creative">Creative</span>
+        <span class="rtag rt-media">Media Buying</span>
+      </div>
+      <div class="p-grid">
+        <div class="p-card"><div class="pi" style="background:#ef444418;color:#ef4444">RS</div><div class="pd"><div class="nm">Roldan Sayago Jr.</div><div class="rl">Key person — decision maker <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/roldan-sayago-jr-2440ba95" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="pi" style="background:#ef444418;color:#ef4444">ES</div><div class="pd"><div class="nm">Eman Saleem</div><div class="rl">Underperformed — info only <span class="pp pp-low">Info</span></div></div><a class="li" href="https://www.linkedin.com/in/eman-saleem-5724a520b" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="pi" style="background:#ef444418;color:#ef4444">JC</div><div class="pd"><div class="nm">Joshua Cuizon</div><div class="rl">Ex-Video Editor <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/joshuacuizon" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="pi" style="background:#ef444418;color:#ef4444">CL</div><div class="pd"><div class="nm">Clndtzn</div><div class="rl">Media Buyer <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/clndtzn" target="_blank">LinkedIn</a></div>
+      </div>
+      <div class="note"><strong>Joshua Cuizon is ex-staff</strong> — easiest poach. Clndtzn (media buyer) knows their ad strategy. Roldan = decision maker, valuable for intel even if not poachable.</div>
+    </div>
+  </div>
+
+  <!-- BOOSTIVA -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#5eead4,#2dd4bf)">BO</div>
+      <div class="info"><h4>Boostiva</h4><div class="url">tryboostiva.shop &bull; Direct competitor</div></div>
+      <div class="no-data">Needs research</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()">
+      <div class="nr">No team data yet.<br><span>Research LinkedIn, Meta Ad Library, TikTok Creative Center</span></div>
+    </div>
+  </div>
+
+  <!-- XARA -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#fbbf24,#f59e0b)">XA</div>
+      <div class="info"><h4>Xara Shilajit</h4><div class="url">xarashilajit.com &bull; Direct competitor</div></div>
+      <div class="people-count">1 person</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()">
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">
+        <span class="rtag rt-retention">Retention / Email</span>
+      </div>
+      <div class="p-grid">
+        <div class="p-card"><div class="pi" style="background:#fbbf2418;color:#fbbf24">DH</div><div class="pd"><div class="nm">Digital Hammad</div><div class="rl">Email / Retention specialist <span class="pp pp-med">Watch</span></div></div><a class="li" href="https://www.linkedin.com/in/digitalhammad" target="_blank">LinkedIn</a></div>
+      </div>
+      <div class="note"><strong>Only email person found.</strong> Dig deeper — check their ad library for creative agency signals. Hammad knows their retention flows.</div>
+    </div>
+  </div>
+
+  <!-- MARS GHC -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#60a5fa,#3b82f6)">MG</div>
+      <div class="info"><h4>Mars GHC</h4><div class="url">marsghc.com &bull; Direct competitor</div></div>
+      <div class="people-count">1 person</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()">
+      <div class="p-grid">
+        <div class="p-card"><div class="pi" style="background:#60a5fa18;color:#60a5fa">AG</div><div class="pd"><div class="nm">Anoosha Ghosh</div><div class="rl">Contact <span class="pp pp-med">Watch</span></div></div><a class="li" href="https://www.linkedin.com/in/anoosha-ghosh" target="_blank">LinkedIn</a></div>
+      </div>
+      <div style="margin-top:14px"><div style="font-size:10px;color:#5eead4;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">Parent Company</div>
+        <div class="ag-row">
+          <div class="ag"><a href="https://www.linkedin.com/company/good-health-company/about/" target="_blank">Good Health Company</a> — real company behind marsghc.com</div>
+        </div>
+      </div>
+      <div class="note"><strong>Good Health Company is the real operation.</strong> Search their company page for full team — likely much larger than what's visible under Mars GHC brand. Solid poaching ground.</div>
+    </div>
+  </div>
+
+  <!-- MYHEMIOS -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#f472b6,#ec4899)">MH</div>
+      <div class="info"><h4>MyHemios</h4><div class="url">Indirect competitor</div></div>
+      <div class="no-data">Needs research</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()">
+      <div class="nr">No team data yet.<br><span>Indirect competitor — research LinkedIn + ad creatives</span></div>
+    </div>
+  </div>
+
+  <!-- AURIVITA -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)">AV</div>
+      <div class="info"><h4>Aurivita</h4><div class="url">aurivita.co &bull; Indirect competitor</div></div>
+      <div class="no-data">Needs research</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()">
+      <div class="nr">No team data yet.<br><span>Indirect competitor — research LinkedIn + ad creatives</span></div>
+    </div>
+  </div>
+
 </div>
 
-<!-- SECTION: PLAYBOOK -->
-<div class="section" id="sec-playbook">
-  <div class="section-head">
-    <h2>Action Playbook — Next Steps</h2>
-    <div class="pill">WEEK 1 PRIORITIES</div>
+<!-- KEGEL BRANDS -->
+<div id="sec-kegel"></div>
+<div class="cat-bar">
+  <div class="cat-dot" style="background:#5eead4"></div>
+  <h3>Kegel Exercise Brands</h3>
+  <div class="cat-count">4 brands</div>
+</div>
+
+<div class="sec">
+
+  <!-- THE COACH -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#5eead4,#14b8a6)">TC</div>
+      <div class="info"><h4>The Coach</h4><div class="url">quiz.the.coach &bull; Kegel exercises</div></div>
+      <div class="people-count">4 people</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()">
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">
+        <span class="rtag rt-creative">Creative Production</span>
+        <span class="rtag rt-creative">Content</span>
+      </div>
+      <div class="p-grid">
+        <div class="p-card"><div class="pi" style="background:#5eead418;color:#5eead4">EP</div><div class="pd"><div class="nm">Ernest Polishchuk</div><div class="rl">Creative Producer <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/ernest-polishchuk-45108a26b" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="pi" style="background:#5eead418;color:#5eead4">NK</div><div class="pd"><div class="nm">Nikita Kalancha</div><div class="rl">Team Member <span class="pp pp-med">Watch</span></div></div><a class="li" href="https://www.linkedin.com/in/nikita-kalancha" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="pi" style="background:#5eead418;color:#5eead4">NB</div><div class="pd"><div class="nm">Natalia Barashkova</div><div class="rl">Creative Producer <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/natalia-barashkova-75929484" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="pi" style="background:#5eead418;color:#5eead4">AS</div><div class="pd"><div class="nm">Angelina Sarycheva</div><div class="rl">Head of Content <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/angelina-sarycheva-6a1b80113" target="_blank">LinkedIn</a></div>
+      </div>
+      <div class="note"><strong>Heavy creative team.</strong> Two creative producers + head of content. These people know how to produce health/wellness content that converts in this exact niche. All 3 are high-priority poach targets.</div>
+    </div>
   </div>
-  <div class="playbook">
-    <div class="play-step" data-step="01">
-      <h4>Verify & Enrich</h4>
-      <p>Validate unverified contacts and fill gaps in brand data.</p>
-      <ul>
-        <li>Verify ReviveHealth (Leo Zanis)</li>
-        <li>Research Elare deeper</li>
-        <li>Map Relatio's full hiring pipeline</li>
-        <li>Confirm Mars GHC / Good Health Co structure</li>
+
+  <!-- REVIVEHEALTH -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#34d399,#059669)">RH</div>
+      <div class="info"><h4>ReviveHealth</h4><div class="url">tryrevivehealth.com &bull; Kegel exercises</div></div>
+      <div class="people-count">1 person</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()">
+      <div class="p-grid">
+        <div class="p-card"><div class="pi" style="background:#34d39918;color:#34d399">LZ</div><div class="pd"><div class="nm">Leo Zanis</div><div class="rl">Contact <span class="pp pp-low">Info</span></div></div><a class="li" href="https://www.linkedin.com/in/leozanis" target="_blank">LinkedIn</a></div>
+      </div>
+      <div class="note warn"><strong>Not 100% verified.</strong> Validate before outreach. Check their ad library and landing pages for more team signals.</div>
+    </div>
+  </div>
+
+  <!-- RELATIO -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#fb923c,#ea580c)">RE</div>
+      <div class="info"><h4>Relatio</h4><div class="url">getrelatio.com &bull; Kegel exercises</div></div>
+      <div class="people-count">1 person</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()">
+      <div class="p-grid">
+        <div class="p-card"><div class="pi" style="background:#fb923c18;color:#fb923c">MM</div><div class="pd"><div class="nm">Mykyta Marushchak</div><div class="rl">Key Contact <span class="pp pp-med">Watch</span></div></div><a class="li" href="https://www.linkedin.com/in/mykyta-marushchak-385ba421a" target="_blank">LinkedIn</a></div>
+      </div>
+      <div style="margin-top:14px"><div style="font-size:10px;color:#5eead4;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">Company Page</div>
+        <div class="ag-row">
+          <div class="ag"><a href="https://www.linkedin.com/company/getrelatio/" target="_blank">getrelatio LinkedIn</a></div>
+        </div>
+      </div>
+      <div class="note"><strong>Ukraine-based team, massive creative hiring in 2025.</strong> Their company page will reveal more team members. Great source for cost-effective creative talent poaching.</div>
+    </div>
+  </div>
+
+  <!-- KEGEL PLAN -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#818cf8,#6366f1)">KP</div>
+      <div class="info"><h4>Kegel Plan</h4><div class="url">kegel-plan.co &bull; Kegel exercises</div></div>
+      <div class="no-data">Needs research</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()">
+      <div class="nr">No team data yet.<br><span>Research LinkedIn + ad creatives + landing page signals</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- HARD SCALING BRANDS -->
+<div id="sec-scaling"></div>
+<div class="cat-bar">
+  <div class="cat-dot" style="background:#f472b6"></div>
+  <h3>Hard Scaling Brands — Poach Targets</h3>
+  <div class="cat-count">10 brands</div>
+</div>
+
+<div class="sec">
+
+  <!-- ELARE -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#f472b6,#db2777)">EL</div>
+      <div class="info"><h4>Elare</h4><div class="url">elare.store</div></div>
+      <div class="people-count">1 agency</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()">
+      <div style="margin-top:10px"><div style="font-size:10px;color:#5eead4;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">Possible Agency</div>
+        <div class="ag-row">
+          <div class="ag"><a href="https://www.linkedin.com/company/pereira-odell/" target="_blank">Pereira & O'Dell</a> — connection unclear</div>
+        </div>
+      </div>
+      <div class="note"><strong>Minimal intel.</strong> If Pereira & O'Dell is confirmed, their team is poachable for creative strategy roles.</div>
+    </div>
+  </div>
+
+  <!-- LYMPHORIA -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#e879f9,#a855f7)">LY</div>
+      <div class="info"><h4>Lymphoria</h4><div class="url">lymphoria.co</div></div>
+      <div class="people-count">1 person</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()">
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">
+        <span class="rtag rt-retention">Retention</span>
+      </div>
+      <div class="p-grid">
+        <div class="p-card"><div class="pi" style="background:#e879f918;color:#e879f9">OI</div><div class="pd"><div class="nm">Orestis Iliou</div><div class="rl">Retention Engineer <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/orestis-iliou-8b070926b" target="_blank">LinkedIn</a></div>
+      </div>
+      <div class="note"><strong>Retention engineer = knows their LTV flows, email sequences, churn reduction.</strong> High-value poach — this person understands the economics of supplement subscriptions.</div>
+    </div>
+  </div>
+
+  <!-- PIPITEA -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#fbbf24,#d97706)">PP</div>
+      <div class="info"><h4>Pipitea</h4><div class="url">shop.pipitea.com</div></div>
+      <div class="no-data">Needs research</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()"><div class="nr">No team data yet.<br><span>Hard scaling brand — check LinkedIn, Meta Ad Library, TikTok Creative Center</span></div></div>
+  </div>
+
+  <!-- LIREA -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#38bdf8,#0284c7)">LR</div>
+      <div class="info"><h4>Lirea</h4><div class="url">getlirea.com</div></div>
+      <div class="no-data">Needs research</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()"><div class="nr">No team data yet.<br><span>Hard scaling brand — check LinkedIn, Meta Ad Library, TikTok Creative Center</span></div></div>
+  </div>
+
+  <!-- CLARITYMD -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#4ade80,#16a34a)">CM</div>
+      <div class="info"><h4>ClarityMD</h4><div class="url">claritymd.co</div></div>
+      <div class="no-data">Needs research</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()"><div class="nr">No team data yet.<br><span>Hard scaling brand — check LinkedIn, Meta Ad Library, TikTok Creative Center</span></div></div>
+  </div>
+
+  <!-- ASUNO -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#f87171,#b91c1c)">AS</div>
+      <div class="info"><h4>Asuno</h4><div class="url">tryasuno.com</div></div>
+      <div class="no-data">Needs research</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()"><div class="nr">No team data yet.<br><span>Hard scaling brand — check LinkedIn, Meta Ad Library, TikTok Creative Center</span></div></div>
+  </div>
+
+  <!-- SCULPTIQUE -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#a3e635,#65a30d)">SC</div>
+      <div class="info"><h4>Sculptique</h4><div class="url">trysculptique.com</div></div>
+      <div class="no-data">Needs research</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()"><div class="nr">No team data yet.<br><span>Hard scaling brand — check LinkedIn, Meta Ad Library, TikTok Creative Center</span></div></div>
+  </div>
+
+  <!-- NUORA -->
+  <div class="brand-row" onclick="this.classList.toggle('open')">
+    <div class="br-head">
+      <div class="av" style="background:linear-gradient(135deg,#fb7185,#e11d48)">NU</div>
+      <div class="info"><h4>Nuora</h4><div class="url">mynuora.com</div></div>
+      <div class="no-data">Needs research</div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="br-body" onclick="event.stopPropagation()"><div class="nr">No team data yet.<br><span>Hard scaling brand — check LinkedIn, Meta Ad Library, TikTok Creative Center</span></div></div>
+  </div>
+
+</div>
+
+<!-- ROLE MAP -->
+<div id="sec-roles"></div>
+<div class="sec">
+  <div class="sec-h">
+    <h2>Poachable Roles — By Function</h2>
+    <div class="badge">WHO TO TARGET FIRST</div>
+  </div>
+
+  <div class="role-map">
+    <div class="rm-card">
+      <h4><span class="rtag rt-creative" style="font-size:11px">Creative</span> Video & Content</h4>
+      <ul class="rm-list">
+        <li><span>Eduardo Troconis — Video Editor</span><span class="from">JoyMode</span></li>
+        <li><span>Jiannan Du — TikTok Creative</span><span class="from">JoyMode</span></li>
+        <li><span>Joshua Cuizon — Ex-Video Editor</span><span class="from">PrimalStorm</span></li>
+        <li><span>Ernest Polishchuk — Creative Producer</span><span class="from">The Coach</span></li>
+        <li><span>Natalia Barashkova — Creative Producer</span><span class="from">The Coach</span></li>
+        <li><span>Angelina Sarycheva — Head of Content</span><span class="from">The Coach</span></li>
       </ul>
     </div>
-    <div class="play-step" data-step="02">
-      <h4>Outreach — Hot Targets</h4>
-      <p>Prioritize direct outreach to decision makers and high-value contacts.</p>
-      <ul>
-        <li>Roldan Sayago Jr. (PrimalStorm) — direct pitch</li>
-        <li>JoyMode agencies — partnership intro</li>
-        <li>Anoosha Ghosh (Mars GHC) — exploratory call</li>
+
+    <div class="rm-card">
+      <h4><span class="rtag rt-growth" style="font-size:11px">Growth</span> Growth & Strategy</h4>
+      <ul class="rm-list">
+        <li><span>Julien Malet — Head of Growth</span><span class="from">JoyMode</span></li>
+        <li><span>Michael Saint-Aubin — Brand Strategist</span><span class="from">JoyMode</span></li>
+        <li><span>Roldan Sayago Jr. — Decision Maker</span><span class="from">PrimalStorm</span></li>
       </ul>
     </div>
-    <div class="play-step" data-step="03">
-      <h4>Talent Pipeline</h4>
-      <p>Start conversations with poachable talent for ourdelivery team.</p>
-      <ul>
-        <li>Joshua Cuizon (ex-PrimalStorm editor)</li>
-        <li>The Coach creative producers</li>
-        <li>Relatio's Ukraine talent pool</li>
-        <li>Orestis Iliou (Lymphoria retention)</li>
+
+    <div class="rm-card">
+      <h4><span class="rtag rt-retention" style="font-size:11px">Retention</span> Retention & Email</h4>
+      <ul class="rm-list">
+        <li><span>James L. — Retention</span><span class="from">JoyMode</span></li>
+        <li><span>Digital Hammad — Email/Retention</span><span class="from">Xara</span></li>
+        <li><span>Orestis Iliou — Retention Engineer</span><span class="from">Lymphoria</span></li>
       </ul>
     </div>
-    <div class="play-step" data-step="04">
-      <h4>Pitch Prep</h4>
-      <p>Build tailored pitch decks for brands with weak tech infra.</p>
-      <ul>
-        <li>Xara — "beyond email" infra pitch</li>
-        <li>Lymphoria — checkout + upsell pitch</li>
-        <li>PrimalStorm — full service pitch</li>
-        <li>Use agency intel for competitive positioning</li>
+
+    <div class="rm-card">
+      <h4><span class="rtag rt-media" style="font-size:11px">Media</span> Media Buying & Marketplace</h4>
+      <ul class="rm-list">
+        <li><span>Clndtzn — Media Buyer</span><span class="from">PrimalStorm</span></li>
+        <li><span>Subramanyam S. — Amazon/Walmart PPC</span><span class="from">JoyMode</span></li>
+      </ul>
+    </div>
+
+    <div class="rm-card">
+      <h4><span class="rtag rt-other" style="font-size:11px">Other</span> Specialists & Intel</h4>
+      <ul class="rm-list">
+        <li><span>William Lagakos — Nutrition Formulas</span><span class="from">JoyMode</span></li>
+        <li><span>Abha Nath — Investor</span><span class="from">JoyMode</span></li>
+        <li><span>Mykyta Marushchak — Key Contact</span><span class="from">Relatio</span></li>
+        <li><span>Anoosha Ghosh — Contact</span><span class="from">Mars GHC</span></li>
+        <li><span>Nikita Kalancha — Team Member</span><span class="from">The Coach</span></li>
+      </ul>
+    </div>
+
+    <div class="rm-card" style="border-color:#c084fc33;background:#0d0e14">
+      <h4 style="color:#c084fc">Top 8 Poach Priorities</h4>
+      <ul class="rm-list">
+        <li><span style="color:#fff;font-weight:700">1. Joshua Cuizon</span><span class="from">Ex-staff = easy</span></li>
+        <li><span style="color:#fff;font-weight:700">2. Julien Malet</span><span class="from">Head of Growth</span></li>
+        <li><span style="color:#fff;font-weight:700">3. James L.</span><span class="from">Retention</span></li>
+        <li><span style="color:#fff;font-weight:700">4. Jiannan Du</span><span class="from">TikTok Creative</span></li>
+        <li><span style="color:#fff;font-weight:700">5. Ernest Polishchuk</span><span class="from">Creative Producer</span></li>
+        <li><span style="color:#fff;font-weight:700">6. Clndtzn</span><span class="from">Media Buyer</span></li>
+        <li><span style="color:#fff;font-weight:700">7. Orestis Iliou</span><span class="from">Retention Eng.</span></li>
+        <li><span style="color:#fff;font-weight:700">8. Angelina Sarycheva</span><span class="from">Head of Content</span></li>
       </ul>
     </div>
   </div>
 </div>
 
-<div class="footer">Competitor Intelligence Dashboard &bull; May 2026</div>
+<div class="footer">Poaching Intel — Performance Gummies Competitors — May 2026</div>
 
 <script>
-function scrollTo(sel) {
-  document.querySelector(sel)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-}
-
-function filterCards(pri, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  document.querySelectorAll('.b-card').forEach(card => {
-    if (pri === 'all') { card.style.display = ''; }
-    else { card.style.display = card.dataset.pri === pri ? '' : 'none'; }
-  });
+function scrollSec(sel){
+  document.querySelector(sel)?.scrollIntoView({behavior:'smooth',block:'start'});
+  document.querySelectorAll('.top-tab').forEach(b=>b.classList.remove('on'));
+  event.target.classList.add('on');
 }
 </script>
 </body>
