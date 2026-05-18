@@ -54,14 +54,15 @@
   .brand-row.open .br-body{display:block}
 
   .p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-top:14px}
-  .p-card{background:#111320;border:1px solid #1a1d2e;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px;transition:border-color .15s}
+  .p-card{background:#111320;border:1px solid #1a1d2e;border-radius:10px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;transition:border-color .15s;flex-direction:column}
   .p-card:hover{border-color:#c084fc44}
+  .p-card .p-top{display:flex;align-items:center;gap:12px;width:100%}
   .p-card .pi{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
   .p-card .pd{flex:1;min-width:0}
   .p-card .pd .nm{font-size:13px;font-weight:700;color:#e1e4ea}
   .p-card .pd .rl{font-size:11px;color:#555a6e;margin-top:1px}
-  .p-card a.li{flex-shrink:0;background:#c084fc15;color:#c084fc;font-size:10px;font-weight:700;padding:5px 10px;border-radius:6px;text-decoration:none;transition:background .15s}
-  .p-card a.li:hover{background:#c084fc25}
+  .p-card .li-url{display:block;width:100%;background:#0d0e14;border:1px solid #1a1d2e;border-radius:6px;padding:8px 12px;font-size:11px;color:#818cf8;text-decoration:none;word-break:break-all;transition:background .15s;font-family:monospace}
+  .p-card .li-url:hover{background:#151720;color:#c084fc}
 
   .rtag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:4px;text-transform:uppercase;letter-spacing:.3px}
   .rt-creative{background:#c084fc18;color:#c084fc}
@@ -154,14 +155,14 @@
         <span class="rtag rt-other">Nutrition</span>
       </div>
       <div class="p-grid">
-        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">ET</div><div class="pd"><div class="nm">Eduardo Troconis</div><div class="rl">Video Editor <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/eduardotroconis" target="_blank">LinkedIn</a></div>
-        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">MS</div><div class="pd"><div class="nm">Michael Saint-Aubin</div><div class="rl">Brand Strategist <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/michaelsaintaubin" target="_blank">LinkedIn</a></div>
-        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">SS</div><div class="pd"><div class="nm">Subramanyam S.</div><div class="rl">Amazon / Walmart PPC <span class="pp pp-med">Watch</span></div></div><a class="li" href="https://www.linkedin.com/in/subramanyam-s-141295ppc" target="_blank">LinkedIn</a></div>
-        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">JM</div><div class="pd"><div class="nm">Julien Malet</div><div class="rl">Head of Growth <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/julienmalet" target="_blank">LinkedIn</a></div>
-        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">JL</div><div class="pd"><div class="nm">James L.</div><div class="rl">Retention <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/james-l-88560512b" target="_blank">LinkedIn</a></div>
-        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">WL</div><div class="pd"><div class="nm">William Lagakos</div><div class="rl">Nutrition Formulas Consultant <span class="pp pp-med">Watch</span></div></div><a class="li" href="https://www.linkedin.com/in/william-lagakos-b3509744" target="_blank">LinkedIn</a></div>
-        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">AN</div><div class="pd"><div class="nm">Abha Nath</div><div class="rl">Investor <span class="pp pp-low">Info</span></div></div><a class="li" href="https://www.linkedin.com/in/abha-nath-6a021a66" target="_blank">LinkedIn</a></div>
-        <div class="p-card"><div class="pi" style="background:#c084fc18;color:#c084fc">JD</div><div class="pd"><div class="nm">Jiannan Du</div><div class="rl">TikTok Creative Strategist <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/jiannan-du" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#c084fc18;color:#c084fc">ET</div><div class="pd"><div class="nm">Eduardo Troconis</div><div class="rl">Video Editor <span class="pp pp-high">Poach</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/eduardotroconis" target="_blank">https://www.linkedin.com/in/eduardotroconis</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#c084fc18;color:#c084fc">MS</div><div class="pd"><div class="nm">Michael Saint-Aubin</div><div class="rl">Brand Strategist <span class="pp pp-high">Poach</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/michaelsaintaubin" target="_blank">https://www.linkedin.com/in/michaelsaintaubin</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#c084fc18;color:#c084fc">SS</div><div class="pd"><div class="nm">Subramanyam S.</div><div class="rl">Amazon / Walmart PPC <span class="pp pp-med">Watch</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/subramanyam-s-141295ppc" target="_blank">https://www.linkedin.com/in/subramanyam-s-141295ppc</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#c084fc18;color:#c084fc">JM</div><div class="pd"><div class="nm">Julien Malet</div><div class="rl">Head of Growth <span class="pp pp-high">Poach</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/julienmalet" target="_blank">https://www.linkedin.com/in/julienmalet</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#c084fc18;color:#c084fc">JL</div><div class="pd"><div class="nm">James L.</div><div class="rl">Retention <span class="pp pp-high">Poach</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/james-l-88560512b" target="_blank">https://www.linkedin.com/in/james-l-88560512b</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#c084fc18;color:#c084fc">WL</div><div class="pd"><div class="nm">William Lagakos</div><div class="rl">Nutrition Formulas Consultant <span class="pp pp-med">Watch</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/william-lagakos-b3509744" target="_blank">https://www.linkedin.com/in/william-lagakos-b3509744</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#c084fc18;color:#c084fc">AN</div><div class="pd"><div class="nm">Abha Nath</div><div class="rl">Investor <span class="pp pp-low">Info</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/abha-nath-6a021a66" target="_blank">https://www.linkedin.com/in/abha-nath-6a021a66</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#c084fc18;color:#c084fc">JD</div><div class="pd"><div class="nm">Jiannan Du</div><div class="rl">TikTok Creative Strategist <span class="pp pp-high">Poach</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/jiannan-du" target="_blank">https://www.linkedin.com/in/jiannan-du</a></div>
       </div>
       <div style="margin-top:14px"><div style="font-size:10px;color:#5eead4;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">Agency / Partner Ecosystem</div>
         <div class="ag-row">
@@ -189,10 +190,10 @@
         <span class="rtag rt-media">Media Buying</span>
       </div>
       <div class="p-grid">
-        <div class="p-card"><div class="pi" style="background:#ef444418;color:#ef4444">RS</div><div class="pd"><div class="nm">Roldan Sayago Jr.</div><div class="rl">Key person — decision maker <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/roldan-sayago-jr-2440ba95" target="_blank">LinkedIn</a></div>
-        <div class="p-card"><div class="pi" style="background:#ef444418;color:#ef4444">ES</div><div class="pd"><div class="nm">Eman Saleem</div><div class="rl">Underperformed — info only <span class="pp pp-low">Info</span></div></div><a class="li" href="https://www.linkedin.com/in/eman-saleem-5724a520b" target="_blank">LinkedIn</a></div>
-        <div class="p-card"><div class="pi" style="background:#ef444418;color:#ef4444">JC</div><div class="pd"><div class="nm">Joshua Cuizon</div><div class="rl">Ex-Video Editor <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/joshuacuizon" target="_blank">LinkedIn</a></div>
-        <div class="p-card"><div class="pi" style="background:#ef444418;color:#ef4444">CL</div><div class="pd"><div class="nm">Clndtzn</div><div class="rl">Media Buyer <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/clndtzn" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#ef444418;color:#ef4444">RS</div><div class="pd"><div class="nm">Roldan Sayago Jr.</div><div class="rl">Key person — decision maker <span class="pp pp-high">Poach</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/roldan-sayago-jr-2440ba95" target="_blank">https://www.linkedin.com/in/roldan-sayago-jr-2440ba95</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#ef444418;color:#ef4444">ES</div><div class="pd"><div class="nm">Eman Saleem</div><div class="rl">Underperformed — info only <span class="pp pp-low">Info</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/eman-saleem-5724a520b" target="_blank">https://www.linkedin.com/in/eman-saleem-5724a520b</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#ef444418;color:#ef4444">JC</div><div class="pd"><div class="nm">Joshua Cuizon</div><div class="rl">Ex-Video Editor <span class="pp pp-high">Poach</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/joshuacuizon" target="_blank">https://www.linkedin.com/in/joshuacuizon</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#ef444418;color:#ef4444">CL</div><div class="pd"><div class="nm">Clndtzn</div><div class="rl">Media Buyer <span class="pp pp-high">Poach</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/clndtzn" target="_blank">https://www.linkedin.com/in/clndtzn</a></div>
       </div>
       <div class="note"><strong>Joshua Cuizon is ex-staff</strong> — easiest poach. Clndtzn (media buyer) knows their ad strategy. Roldan = decision maker, valuable for intel even if not poachable.</div>
     </div>
@@ -224,7 +225,7 @@
         <span class="rtag rt-retention">Retention / Email</span>
       </div>
       <div class="p-grid">
-        <div class="p-card"><div class="pi" style="background:#fbbf2418;color:#fbbf24">DH</div><div class="pd"><div class="nm">Digital Hammad</div><div class="rl">Email / Retention specialist <span class="pp pp-med">Watch</span></div></div><a class="li" href="https://www.linkedin.com/in/digitalhammad" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#fbbf2418;color:#fbbf24">DH</div><div class="pd"><div class="nm">Digital Hammad</div><div class="rl">Email / Retention specialist <span class="pp pp-med">Watch</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/digitalhammad" target="_blank">https://www.linkedin.com/in/digitalhammad</a></div>
       </div>
       <div class="note"><strong>Only email person found.</strong> Dig deeper — check their ad library for creative agency signals. Hammad knows their retention flows.</div>
     </div>
@@ -240,7 +241,7 @@
     </div>
     <div class="br-body" onclick="event.stopPropagation()">
       <div class="p-grid">
-        <div class="p-card"><div class="pi" style="background:#60a5fa18;color:#60a5fa">AG</div><div class="pd"><div class="nm">Anoosha Ghosh</div><div class="rl">Contact <span class="pp pp-med">Watch</span></div></div><a class="li" href="https://www.linkedin.com/in/anoosha-ghosh" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#60a5fa18;color:#60a5fa">AG</div><div class="pd"><div class="nm">Anoosha Ghosh</div><div class="rl">Contact <span class="pp pp-med">Watch</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/anoosha-ghosh" target="_blank">https://www.linkedin.com/in/anoosha-ghosh</a></div>
       </div>
       <div style="margin-top:14px"><div style="font-size:10px;color:#5eead4;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">Parent Company</div>
         <div class="ag-row">
@@ -303,10 +304,10 @@
         <span class="rtag rt-creative">Content</span>
       </div>
       <div class="p-grid">
-        <div class="p-card"><div class="pi" style="background:#5eead418;color:#5eead4">EP</div><div class="pd"><div class="nm">Ernest Polishchuk</div><div class="rl">Creative Producer <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/ernest-polishchuk-45108a26b" target="_blank">LinkedIn</a></div>
-        <div class="p-card"><div class="pi" style="background:#5eead418;color:#5eead4">NK</div><div class="pd"><div class="nm">Nikita Kalancha</div><div class="rl">Team Member <span class="pp pp-med">Watch</span></div></div><a class="li" href="https://www.linkedin.com/in/nikita-kalancha" target="_blank">LinkedIn</a></div>
-        <div class="p-card"><div class="pi" style="background:#5eead418;color:#5eead4">NB</div><div class="pd"><div class="nm">Natalia Barashkova</div><div class="rl">Creative Producer <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/natalia-barashkova-75929484" target="_blank">LinkedIn</a></div>
-        <div class="p-card"><div class="pi" style="background:#5eead418;color:#5eead4">AS</div><div class="pd"><div class="nm">Angelina Sarycheva</div><div class="rl">Head of Content <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/angelina-sarycheva-6a1b80113" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#5eead418;color:#5eead4">EP</div><div class="pd"><div class="nm">Ernest Polishchuk</div><div class="rl">Creative Producer <span class="pp pp-high">Poach</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/ernest-polishchuk-45108a26b" target="_blank">https://www.linkedin.com/in/ernest-polishchuk-45108a26b</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#5eead418;color:#5eead4">NK</div><div class="pd"><div class="nm">Nikita Kalancha</div><div class="rl">Team Member <span class="pp pp-med">Watch</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/nikita-kalancha" target="_blank">https://www.linkedin.com/in/nikita-kalancha</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#5eead418;color:#5eead4">NB</div><div class="pd"><div class="nm">Natalia Barashkova</div><div class="rl">Creative Producer <span class="pp pp-high">Poach</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/natalia-barashkova-75929484" target="_blank">https://www.linkedin.com/in/natalia-barashkova-75929484</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#5eead418;color:#5eead4">AS</div><div class="pd"><div class="nm">Angelina Sarycheva</div><div class="rl">Head of Content <span class="pp pp-high">Poach</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/angelina-sarycheva-6a1b80113" target="_blank">https://www.linkedin.com/in/angelina-sarycheva-6a1b80113</a></div>
       </div>
       <div class="note"><strong>Heavy creative team.</strong> Two creative producers + head of content. These people know how to produce health/wellness content that converts in this exact niche. All 3 are high-priority poach targets.</div>
     </div>
@@ -322,7 +323,7 @@
     </div>
     <div class="br-body" onclick="event.stopPropagation()">
       <div class="p-grid">
-        <div class="p-card"><div class="pi" style="background:#34d39918;color:#34d399">LZ</div><div class="pd"><div class="nm">Leo Zanis</div><div class="rl">Contact <span class="pp pp-low">Info</span></div></div><a class="li" href="https://www.linkedin.com/in/leozanis" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#34d39918;color:#34d399">LZ</div><div class="pd"><div class="nm">Leo Zanis</div><div class="rl">Contact <span class="pp pp-low">Info</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/leozanis" target="_blank">https://www.linkedin.com/in/leozanis</a></div>
       </div>
       <div class="note warn"><strong>Not 100% verified.</strong> Validate before outreach. Check their ad library and landing pages for more team signals.</div>
     </div>
@@ -338,7 +339,7 @@
     </div>
     <div class="br-body" onclick="event.stopPropagation()">
       <div class="p-grid">
-        <div class="p-card"><div class="pi" style="background:#fb923c18;color:#fb923c">MM</div><div class="pd"><div class="nm">Mykyta Marushchak</div><div class="rl">Key Contact <span class="pp pp-med">Watch</span></div></div><a class="li" href="https://www.linkedin.com/in/mykyta-marushchak-385ba421a" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#fb923c18;color:#fb923c">MM</div><div class="pd"><div class="nm">Mykyta Marushchak</div><div class="rl">Key Contact <span class="pp pp-med">Watch</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/mykyta-marushchak-385ba421a" target="_blank">https://www.linkedin.com/in/mykyta-marushchak-385ba421a</a></div>
       </div>
       <div style="margin-top:14px"><div style="font-size:10px;color:#5eead4;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">Company Page</div>
         <div class="ag-row">
@@ -405,7 +406,7 @@
         <span class="rtag rt-retention">Retention</span>
       </div>
       <div class="p-grid">
-        <div class="p-card"><div class="pi" style="background:#e879f918;color:#e879f9">OI</div><div class="pd"><div class="nm">Orestis Iliou</div><div class="rl">Retention Engineer <span class="pp pp-high">Poach</span></div></div><a class="li" href="https://www.linkedin.com/in/orestis-iliou-8b070926b" target="_blank">LinkedIn</a></div>
+        <div class="p-card"><div class="p-top"><div class="pi" style="background:#e879f918;color:#e879f9">OI</div><div class="pd"><div class="nm">Orestis Iliou</div><div class="rl">Retention Engineer <span class="pp pp-high">Poach</span></div></div></div><a class="li-url" href="https://www.linkedin.com/in/orestis-iliou-8b070926b" target="_blank">https://www.linkedin.com/in/orestis-iliou-8b070926b</a></div>
       </div>
       <div class="note"><strong>Retention engineer = knows their LTV flows, email sequences, churn reduction.</strong> High-value poach — this person understands the economics of supplement subscriptions.</div>
     </div>
